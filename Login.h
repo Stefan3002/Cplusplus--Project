@@ -1,8 +1,8 @@
 //
-// Created by Stefan on 16.03.2022.
+// Created by Stefan on 18.05.2022.
 //
 
-#ifndef LABORATOR_1_2_LOGIN_H
-#define LABORATOR_1_2_LOGIN_H
+#ifndef PROIECT_PP_C___LOGIN_H
+#define PROIECT_PP_C___LOGIN_H
 int startLogin();
-#endif //LABORATOR_1_2_LOGIN_H
+#endif //PROIECT_PP_C___LOGIN_H
