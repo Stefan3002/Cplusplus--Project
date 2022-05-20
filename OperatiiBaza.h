@@ -1,16 +1,15 @@
 //
-// Created by Stefan on 02.03.2022.
+// Created by Stefan on 20.05.2022.
 //
 
-#ifndef LABORATOR_1_2_OPERATIIBAZA_H
-#define LABORATOR_1_2_OPERATIIBAZA_H
+#ifndef PROIECT_PP_C___OPERATIIBAZA_H
+#define PROIECT_PP_C___OPERATIIBAZA_H
+
+#include <vector>
+#include "contact.h"
+
 void StergePersoana();
 void AdaugaPersoana();
-int ScrieOptiuni(int cuIntampinare);
+int ScrieOptiuni(int cuIntampinare, vector <contact> Agenda);
 void AfiseazaMeniu();
-#endif //LABORATOR_1_2_OPERATIIBAZA_H
-
-
-
-
-
+#endif //PROIECT_PP_C___OPERATIIBAZA_H

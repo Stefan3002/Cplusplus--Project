@@ -3,15 +3,16 @@
 #include "contact.h"
 #include <string>
 #include <fstream>
+#include <vector>
 #define NMAX 70
 using namespace std;
 
 
 
 int main() {
-    string PATH = "contacts.txt";
-    ifstream intrare(PATH);
-    int nrtotal = 0;
+//    string PATH = "contacts.txt";
+//    ifstream intrare(PATH);
+//    int nrtotal = 0;
 
 //    while(intrare>>PATH) {
 ////            printf("Nu s-a gasit fisierul.\n");
@@ -22,16 +23,17 @@ int main() {
 //        fname = fopen(PATH, "r");
 //    }
 
-    string line;
-    while(intrare>>line)
-        nrtotal++;
+//    string line;
+//    while(intrare>>line)
+//        nrtotal++;
 //    fclose(fname);
 //    printf("======%d=====", *nr);
 
 //    printf("%d",nrtotal);
 
 //    struct contact Agenda[nrtotal];
-    contact *Agenda[nrtotal];
+    vector <contact> Agenda;
     AfiseazaMeniu(Agenda);
+
     return 0;
 }

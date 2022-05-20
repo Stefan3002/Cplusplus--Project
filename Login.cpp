@@ -71,7 +71,7 @@ int createAccount(){
 
 
 int login(string CurrentUser){
-    string Username = "", Passwrod = "", inputUsername = "", inputPassword = "";
+    string Username = "", Password = "", inputUsername = "", inputPassword = "";
 
     ifstream intrare("user.txt");
 //    if(fname == NULL){
@@ -80,7 +80,7 @@ int login(string CurrentUser){
 //    }
     string line;
 
-    cout<<"Nume utilizator:\n");
+    cout<<"Nume utilizator:\n";
     cin>>inputUsername;
 
     while(intrare>>line) {
@@ -88,57 +88,57 @@ int login(string CurrentUser){
 //            line[strlen(line) - 1] = '\0';
 
         Username = line;
-        fgets(line,NMAX,fname);
+//        fgets(line,NMAX,fname);
 
-        if(line[strlen(line) - 1] == '\n')
-            line[strlen(line) - 1] = '\0';
-
-        strcpy(Password,line);
-        if(strcmp(Username,inputUsername) == 0)
+//        if(line[strlen(line) - 1] == '\n')
+//            line[strlen(line) - 1] = '\0';
+        intrare>>line;
+        Password = line;
+        if(Username == inputUsername)
             break;
     }
-    fclose(fname);
+//    fclose(fname);
 
     //Start input
 
     int key = 0;
     char keyc;
 
-    cout<<"Parola:\n");
-    scanf("%s",inputPassword);
-    cout<<"Daca cheia introdusa este formata din mai multe cifre se va lua in considerare doar prima cifra.\n");
+    cout<<"Parola:\n";
+    cin>>inputPassword;
+    cout<<"Daca cheia introdusa este formata din mai multe cifre se va lua in considerare doar prima cifra.\n";
     do {
         fflush(stdin);
-        cout<<"Cheia ( 1->9 ):\n");
-        scanf("%c", &keyc);
+        cout<<"Cheia ( 1->9 ):\n";
+        cin>>keyc;
         if (isdigit(keyc) && keyc >= '1' && keyc <= '9')
             key = keyc - '0';
     }while(!key);
 
 
 
-    strcpy(CurrentUser, inputUsername);
+    CurrentUser = inputUsername;
 
-    char DecryptedPass[NMAX];
-    strcpy(DecryptedPass,Password);
+    string DecryptedPass;
+    DecryptedPass = Password;
     Decrypt(DecryptedPass,key);
 
-    if(strcmp(inputUsername,Username) == 0)
-        if(strcmp(inputPassword,DecryptedPass) == 0)
+    if(inputUsername == Username)
+        if(inputPassword == DecryptedPass)
             return 1;
-    cout<<"Combinatie gresita");
+    cout<<"Combinatie gresita";
     return 0;
 }
 
 
 
 
-int startLogin(char CurrentUser[]){
+int startLogin(string CurrentUser){
     char answer = ' ';
-    cout<<"<=====Login=====>\n");
-    cout<<"\nAveti cont? y/n\n");
+    cout<<"<=====Login=====>\n";
+    cout<<"\nAveti cont? y/n\n";
     fflush(stdin);
-    scanf("%c",&answer);
+    cin>>answer;
     if(answer == 'y'){
         short int aux = login(CurrentUser);
         return aux;
@@ -146,7 +146,7 @@ int startLogin(char CurrentUser[]){
     else if (answer == 'n')
         return createAccount();
     else{
-        cout<<"Alegere invalida!\n");
+        cout<<"Alegere invalida!\n";
         startLogin(CurrentUser);
     }
     return 0;
