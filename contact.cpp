@@ -6,16 +6,17 @@
 #include <iostream>
 using namespace std;
 
-void contact::init(string Nume, string Prenume, string NrTelefon, string Email, string Eticheta) {
+void contact::init(string Nume, string Prenume, string NrTelefon, string Email, string Eticheta, string CurrentUser) {
     this->Nume = Nume;
     this->Prenume = Prenume;
     this->NrTelefon = NrTelefon;
     this->Email = Email;
     this->Eticheta = Eticheta;
+    this->CurrentUser = CurrentUser;
 }
 
-contact::contact(string Nume, string Prenume, string NrTelefon, string Email, string Eticheta) {
-    init(Nume, Prenume, NrTelefon, Email, Eticheta);
+contact::contact(string Nume, string Prenume, string NrTelefon, string Email, string Eticheta, string CurrentUser) {
+    init(Nume, Prenume, NrTelefon, Email, Eticheta, CurrentUser);
 }
 
 ostream &operator<<(ostream &COUT, contact &c) {

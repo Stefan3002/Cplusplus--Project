@@ -1,20 +1,14 @@
 //
-// Created by Stefan on 17.03.2022.
+// Created by Stefan on 25.05.2022.
 //
+
+#ifndef PROIECT_PP_C___PRELUAREDATE_H
+#define PROIECT_PP_C___PRELUAREDATE_H
 #define NMAX 70
+#include "contact.h"
+#include <vector>
 
-struct contact{
-    char Nume[NMAX];
-    char Prenume[NMAX];
-    char NrTelefon[NMAX];
-    char Email[NMAX];
-    char Eticheta[NMAX];
-};
-
-
-#ifndef LABORATOR_1_2_PRELUAREDATE_H
-#define LABORATOR_1_2_PRELUAREDATE_H
-void preluareDate(char CurrentUser[],struct contact Agenda[], int *nr);
-void stergeContact(char CurrentUser[],struct contact Agenda[], int *nr, char TargetName[]);
-void stergeContactTelefon(char CurrentUser[],struct contact Agenda[], int *nr, char TargetTelefon[]);
-#endif //LABORATOR_1_2_PRELUAREDATE_H
+void preluareDate(string CurrentUser,vector <contact> Agenda, int &nr);
+void stergeContact(string CurrentUser,vector <contact> Agenda, int &nr, string TargetName);
+void stergeContactTelefon(string CurrentUser,vector <contact> Agenda, int &nr, string TargetTelefon);
+#endif //PROIECT_PP_C___PRELUAREDATE_H

@@ -18,7 +18,7 @@ using namespace std;
 int nr = -1;
 string CurrentUser;
 
-void adaugaContact(char Nume[], char Prenume[], char NrTelefon[], char Email[], char Eticheta[], int *nr, struct contact Agenda[]){
+void adaugaContact(char Nume[], char Prenume[], char NrTelefon[], char Email[], char Eticheta[], int *nr, vector <contact> Agenda){
     FILE *fname = fopen("contacts.txt", "a");
     fprintf(fname,"%s,%s,%s,%s,%s,%s\n",CurrentUser,Nume,Prenume,NrTelefon,Email,Eticheta);
     *nr = *(nr) + 1;
@@ -30,7 +30,7 @@ void adaugaContact(char Nume[], char Prenume[], char NrTelefon[], char Email[], 
     fclose(fname);
 }
 
-void PrintToatePersoane(struct contact Agenda[]){
+void PrintToatePersoane(vector <contact> Agenda){
     for(int i = 0; i <= nr; i++){
         if(Agenda[i].Nume[strlen(Agenda[i].Nume) - 1] == '*') {
             Agenda[i].Nume[strlen(Agenda[i].Nume) - 1] = '\0';
@@ -49,7 +49,7 @@ void PrintToatePersoane(struct contact Agenda[]){
 
 }
 
-void PrintEtichetaPersoane(char Tag[],struct contact Agenda[]){
+void PrintEtichetaPersoane(char Tag[],vector <contact> Agenda){
     short int printed = 0;
     short matches_found = 0;
     for(int i = 0; i < strlen(Tag); i++)
@@ -83,7 +83,7 @@ void PrintEtichetaPersoane(char Tag[],struct contact Agenda[]){
 
 }
 
-int divide(int i, int j, struct contact Agenda[]){
+int divide(int i, int j, vector <contact> Agenda){
     int ii = 0;
     int jj = -1;
     while(i < j){
@@ -111,7 +111,7 @@ void quicki(int st, int dr, struct  contact Agenda[]){
 }
 
 
-void PrintAlfabetic(struct contact Agenda[]){
+void PrintAlfabetic(vector <contact> Agenda){
     quicki(0,nr,Agenda);
     for(int i = 0; i <= nr; i++){
         printf("<-------  ------->\n");
@@ -128,7 +128,7 @@ void PrintAlfabetic(struct contact Agenda[]){
 }
 
 
-void PrintPersoane(struct contact Agenda[]){
+void PrintPersoane(vector <contact> Agenda){
     printf("<--------Afisare persoane---------->\n\n");
     int alegere = -1;
     char alegerec;
@@ -204,7 +204,7 @@ int ScrieOptiuni(int cuIntampinare,vector <contact> Agenda){
     }
 }
 
-void AdaugaPersoana(struct contact Agenda[]){
+void AdaugaPersoana(vector <contact> Agenda){
     char Nume[20],Prenume[20],Mail[30],NrTelefon[30];
     char Eticheta[NMAX];
     int OK = 1;
@@ -306,7 +306,7 @@ void AdaugaPersoana(struct contact Agenda[]){
     adaugaContact(Nume,Prenume,NrTelefon,Mail,Eticheta,&nr,Agenda);
 }
 
-void StergePersoana(struct contact Agenda[]){
+void StergePersoana(vector <contact> Agenda){
 
     int Alegere = -1;
     char Alegerec;

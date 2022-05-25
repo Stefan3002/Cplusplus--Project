@@ -12,6 +12,7 @@
 using namespace std;
 #define NMAX 70
 
+//TRANSLATE STEFAN
 void Encrypt(string text,int key){
 
     for(int i = 0; i < text.length(); i++)
@@ -20,7 +21,7 @@ void Encrypt(string text,int key){
 //    else
         text[i] += key;
 }
-
+//TRANSLATE STEFAN
 void Decrypt(string text,int key){
 
     for(int i = 0; i < text.length(); i++)
@@ -30,7 +31,7 @@ void Decrypt(string text,int key){
         text[i] -= key;
 }
 
-
+//TRANSLATE STEFAN
 int createAccount(){
     string Username, Password;
     FILE * fname;
@@ -69,7 +70,7 @@ int createAccount(){
 }
 
 
-
+//TRANSLATE STEFAN
 int login(string CurrentUser){
     string Username = "", Password = "", inputUsername = "", inputPassword = "";
 
@@ -132,7 +133,7 @@ int login(string CurrentUser){
 
 
 
-
+//TRANSLATE STEFAN
 int startLogin(string CurrentUser){
     char answer = ' ';
     cout<<"<=====Login=====>\n";

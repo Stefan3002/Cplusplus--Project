@@ -11,9 +11,10 @@ class contact {
 private:
     string Nume,Prenume,NrTelefon;
     string Email,Eticheta;
-    void init(string Nume, string Prenume, string NrTelefon, string Email, string Eticheta);
+    string CurrentUser;
+    void init(string Nume, string Prenume, string NrTelefon, string Email, string Eticheta, string CurrentUser);
 public:
-    contact(string Nume, string Prenume, string NrTelefon, string Email, string Eticheta);
+    contact(string Nume, string Prenume, string NrTelefon, string Email, string Eticheta, string CurrentUser = "");
     friend ostream& operator << (ostream& COUT, contact& c);
 
     string getNume(){
@@ -30,6 +31,9 @@ public:
     }
     string getEticheta(){
         return this->Eticheta;
+    }
+    string getCurrentUser(){
+        return this->CurrentUser;
     }
 };
 
