@@ -4,5 +4,8 @@
 
 #ifndef PROIECT_PP_C___LOGIN_H
 #define PROIECT_PP_C___LOGIN_H
-int startLogin();
+#include <string>
+using namespace std;
+
+int startLogin(string &CurrentUser);
 #endif //PROIECT_PP_C___LOGIN_H

@@ -12,30 +12,22 @@
 using namespace std;
 #define NMAX 70
 
-//TRANSLATE STEFAN
-void Encrypt(string text,int key){
+//TRANSLATE STEFAN Verified It WORKS!
+void Encrypt(string &text,int key){
 
     for(int i = 0; i < text.length(); i++)
-//    if((int) (text[i]) + key > 122)
-//        text[i] = (text[i] + key) % 122 + 96;
-//    else
         text[i] += key;
 }
-//TRANSLATE STEFAN
-void Decrypt(string text,int key){
+//TRANSLATE STEFAN Verified It WORKS!
+void Decrypt(string &text,int key){
 
     for(int i = 0; i < text.length(); i++)
-//        if((int) (text[i]) - key < 97)
-//            text[i] = (123 + (text[i] - 97) - key);
-//        else
         text[i] -= key;
 }
 
-//TRANSLATE STEFAN
+//TRANSLATE STEFAN Verified It WORKS!
 int createAccount(){
     string Username, Password;
-    FILE * fname;
-
     int key = 0;
     char keyc;
 
@@ -47,7 +39,7 @@ int createAccount(){
     cout<<"Cheie noua:\n";
     cout<<"Daca cheia introdusa este formata din mai multe cifre se va lua in considerare doar prima cifra.\n";
     do {
-        fflush(stdin);
+//        fflush(stdin);
         cout<<"Cheia ( 1->9 ):\n";
         cin>>keyc;
         if (isdigit(keyc) && keyc >= '1' && keyc <= '9')
@@ -56,22 +48,18 @@ int createAccount(){
 
     ///Opening file
 
-    ofstream iesire("user.txt");
-//    if(fname == nullptr){
-//        cout<<"Nu am putut deschide fisierul...");
-//        return 0;
-//    }
+    ofstream iesire("user.txt", fstream::app);
 
     Encrypt(Password,key);
 
-    iesire<<Username<<Password;
+    iesire<<endl<<Username<<endl<<Password;
     cout<<"Utilizator creat cu succes!\n";
     return 1;
 }
 
 
-//TRANSLATE STEFAN
-int login(string CurrentUser){
+//TRANSLATE STEFAN Verified It WORKS!
+int login(string &CurrentUser){
     string Username = "", Password = "", inputUsername = "", inputPassword = "";
 
     ifstream intrare("user.txt");
@@ -134,7 +122,7 @@ int login(string CurrentUser){
 
 
 //TRANSLATE STEFAN
-int startLogin(string CurrentUser){
+int startLogin(string &CurrentUser){
     char answer = ' ';
     cout<<"<=====Login=====>\n";
     cout<<"\nAveti cont? y/n\n";

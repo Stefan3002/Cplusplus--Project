@@ -10,6 +10,6 @@
 
 void StergePersoana();
 void AdaugaPersoana();
-int ScrieOptiuni(int cuIntampinare, vector <contact> Agenda);
-void AfiseazaMeniu();
+int ScrieOptiuni(int cuIntampinare, vector <contact> &Agenda);
+void AfiseazaMeniu(vector <contact> &Agenda);
 #endif //PROIECT_PP_C___OPERATIIBAZA_H
