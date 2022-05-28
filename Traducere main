@@ -1,0 +1,39 @@
+#include <iostream>
+#include "OperatiiBaza.h"
+#include "contact.h"
+#include <string>
+#include <fstream>
+#include <vector>
+#define NMAX 70
+using namespace std;
+
+
+
+int main() {
+    string PATH = "contacts.txt";
+   ifstream intrare(PATH);
+    int nrtotal = 0;
+
+    while(intrare>>PATH) {
+           cout<<"Nu s-a gasit fisierul."<<endl;
+        cout<<"Introduceti adresa fisierului."<<endl;
+       cin>> PATH;
+        if (PATH[PATH.size() - 1] == '\n')
+            PATH.replace(PATH.size() - 1,1,"\0")
+        fname = fopen(PATH, "r");
+    }
+
+    string line;
+    while(intrare>>line)
+        nrtotal++;
+    fname.close();
+//    printf("======%d=====", *nr);
+
+//    printf("%d",nrtotal);
+
+
+    vector <contact> Agenda;
+    AfiseazaMeniu(Agenda);
+
+    return 0;
+}
