@@ -55,15 +55,19 @@ void preluareDate(string CurrentUser,vector <contact> &Agenda, int &nr){
 
         string Nume, Prenume, NrTelefon, Email, Eticheta;
 
-
+        bool Fav = 0;
         User = tokens[0];
         Nume = tokens[1];
         Prenume = tokens[2];
         NrTelefon = tokens[3];
         Email = tokens[4];
         Eticheta = tokens[5];
+        if(Eticheta[Eticheta.length() - 1] == 'y') {
+            Fav = true;
+            Eticheta[Eticheta.length() - 1] = '\0';
+        }
         if(User == CurrentUser){
-            contact c(Nume,Prenume,NrTelefon,Email,Eticheta,User);
+            contact c(Nume,Prenume,NrTelefon,Email,Eticheta,User,Fav);
             Agenda.push_back(c);
         }
         else
@@ -206,14 +210,15 @@ void preluareDateOtherUsersTel(string CurrentUser,vector <contact> &Agenda, int 
 }
 
 //
-//void stergeContact(char CurrentUser[],struct contact Agenda[], int *nr ,char TargetName[]) {
+//void stergeContact(string CurrentUser,vector <contact> &Agenda, int &nr ,string TargetName) {
 //
 //    int k = 0;
-//    struct contact aux[NMAX];
-//
-//    FILE *fname = fopen(PATH, "r");
-//    FILE *fname2 = fopen("contacts2.txt", "w");
-//    char line[NMAX];
+////    struct contact aux[NMAX];
+//    ifstream intrare1(PATH);
+//    ifstream intrare2("contacts2.txt");
+////    FILE *fname = fopen(PATH, "r");
+////    FILE *fname2 = fopen("contacts2.txt", "w");
+//    string line;
 //
 //    for(int i = 0; i <= *nr; i++)
 //        if(strcmp(Agenda[i].Nume ,TargetName) == 0)
@@ -273,7 +278,7 @@ void preluareDateOtherUsersTel(string CurrentUser,vector <contact> &Agenda, int 
 //    else
 //        printf("<----0 contacte gasite---->\n\n");
 //}
-//
+
 //void stergeContactTelefon(char CurrentUser[],struct contact Agenda[], int *nr ,char TargetTelefon[]) {
 //
 //    int k = 0;
