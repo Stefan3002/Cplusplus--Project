@@ -8,7 +8,7 @@
 using namespace std;
 
 class contact {
-private:
+protected:
     string Nume,Prenume,NrTelefon;
     string Email,Eticheta;
     string CurrentUser;
@@ -17,6 +17,7 @@ private:
 public:
     contact(string Nume, string Prenume, string NrTelefon, string Email, string Eticheta, string CurrentUser = "", bool fav = false);
     friend ostream& operator << (ostream& COUT, contact& c);
+    virtual ostream& getInfo(ostream &COUT);
     friend bool operator < (contact& c1, contact& c2);
 
     string getNume(){
@@ -37,9 +38,29 @@ public:
     string getCurrentUser(){
         return this->CurrentUser;
     }
-    bool getFav(){
+    bool getFav() const{
         return this->fav;
     }
+    void setNume(string const Nume){
+        this->Nume = Nume;
+    }
+    void setPrenume(string const Prenume){
+        this->Prenume = Prenume;
+    }
+    void setMail(string const Mail){
+        this->Email = Mail;
+    }
+    void setNrTelefon(string const NrTelefon){
+        this->NrTelefon = NrTelefon;
+    }
+    void setFav(bool const Fav){
+        this->fav = Fav;
+    }
+    void setEticheta(string const Eticheta){
+        this->Eticheta = Eticheta;
+    }
+
+
 };
 
 

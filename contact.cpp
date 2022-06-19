@@ -21,7 +21,7 @@ contact::contact(string Nume, string Prenume, string NrTelefon, string Email, st
 }
 
 ostream &operator<<(ostream &COUT, contact &c) {
-    COUT<<c.Nume<<" "<<c.Prenume<<endl<<c.NrTelefon<<endl<<c.Email<<endl<<c.Eticheta;
+    c.getInfo(COUT);
     return COUT;
 }
 
@@ -30,4 +30,9 @@ bool operator<(contact &c1, contact &c2) {
         return c1.getNume() < c2.getNume();
     else
         return c1.getPrenume() < c2.getPrenume();
+}
+
+ostream& contact::getInfo(ostream &COUT) {
+    COUT<<this->Nume<<" "<<this->Prenume<<endl<<this->NrTelefon<<endl<<this->Email<<endl<<this->Eticheta;
+    return COUT;
 }

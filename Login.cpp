@@ -8,6 +8,8 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include "contact.h"
+#include "superUser.h"
 
 using namespace std;
 #define NMAX 70
@@ -26,7 +28,7 @@ void Decrypt(string &text,int key){
 }
 
 //TRANSLATE STEFAN Verified It WORKS!
-int createAccount(){
+int createAccount(superUser& superUser, string mandatoryName){
     string Username, Password;
     int key = 0;
     char keyc;
@@ -34,6 +36,11 @@ int createAccount(){
    cout<<"<=====Cont nou!=====>\n";
     cout<<"Nume utilizator nou:\n";
     cin>>Username;
+    if(mandatoryName != "")
+        while(Username != mandatoryName) {
+            cout<<"Numele de utilizator nu se paote schimba!"<<endl;
+            cin >> Username;
+        }
     cout<<"Parola noua:\n";
     cin>>Password;
     cout<<"Cheie noua:\n";
@@ -51,7 +58,8 @@ int createAccount(){
     ofstream iesire("user.txt", fstream::app);
 
     Encrypt(Password,key);
-
+    superUser.setNume(Username);
+    superUser.setParola(Password);
     iesire<<endl<<Username<<endl<<Password;
     cout<<"Utilizator creat cu succes!\n";
     return 1;
@@ -59,35 +67,21 @@ int createAccount(){
 
 
 //TRANSLATE STEFAN Verified It WORKS!
-int login(string &CurrentUser){
+int login(string &CurrentUser, superUser& superUser){
     string Username = "", Password = "", inputUsername = "", inputPassword = "";
-
     ifstream intrare("user.txt");
-//    if(fname == NULL){
-//        cout<<"Nu am putut deschide fisierul...");
-//        return 0;
-//    }
     string line;
-
     cout<<"Nume utilizator:\n";
     cin>>inputUsername;
-
     while(intrare>>line) {
-//        if(line[strlen(line) - 1] == '\n')
-//            line[strlen(line) - 1] = '\0';
-
         Username = line;
-//        fgets(line,NMAX,fname);
-
-//        if(line[strlen(line) - 1] == '\n')
-//            line[strlen(line) - 1] = '\0';
         intrare>>line;
         Password = line;
         if(Username == inputUsername)
             break;
     }
-//    fclose(fname);
-
+    superUser.setNume(Username);
+    superUser.setParola(Password);
     //Start input
 
     int key = 0;
@@ -122,21 +116,21 @@ int login(string &CurrentUser){
 
 
 //TRANSLATE STEFAN
-int startLogin(string &CurrentUser){
+int startLogin(string &CurrentUser, superUser& superUser){
     char answer = ' ';
     cout<<"<=====Login=====>\n";
     cout<<"\nAveti cont? y/n\n";
     fflush(stdin);
     cin>>answer;
     if(answer == 'y'){
-        short int aux = login(CurrentUser);
+        short int aux = login(CurrentUser, superUser);
         return aux;
     }
     else if (answer == 'n')
-        return createAccount();
+        return createAccount(superUser);
     else{
         cout<<"Alegere invalida!\n";
-        startLogin(CurrentUser);
+        startLogin(CurrentUser, superUser);
     }
     return 0;
 }
